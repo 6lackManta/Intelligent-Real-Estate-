@@ -39,8 +39,46 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapVendorRoutes();
+
+        $this->mapContractorRoutes();
+
         //
+    }    
+    
+    /**
+     * Define the "contractor" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapContractorRoutes()
+    {
+        Route::prefix('contractor')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/contractor.php'));
+    }    
+    
+    /**
+     * Define the "vendor" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapVendorRoutes()
+    {
+        Route::prefix('vendor')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/vendor.php'));
     }
+
+
+
+
 
     /**
      * Define the "web" routes for the application.

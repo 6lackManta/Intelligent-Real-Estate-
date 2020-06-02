@@ -36,9 +36,24 @@ return [
     */
 
     'guards' => [
+        'vendor' => [
+            'driver'   => 'session',
+            'provider' => 'vendors',
+        ],
+
+        'contractor' => [
+            'driver'   => 'session',
+            'provider' => 'contractors',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ], 
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
 
         'api' => [
@@ -66,9 +81,24 @@ return [
     */
 
     'providers' => [
+        'vendors' => [
+            'driver' => 'eloquent',
+            'model'  => App\Vendor::class,
+        ],
+
+        'contractors' => [
+            'driver' => 'eloquent',
+            'model'  => App\Contractor::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [
@@ -93,8 +123,26 @@ return [
     */
 
     'passwords' => [
+        'vendors' => [
+            'provider' => 'vendors',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        'contractors' => [
+            'provider' => 'contractors',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ], 
+
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
         ],
